@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 45 29% 97%;
+    --foreground: 240 8% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 8% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 8% 20%;
+    --primary: 240 8% 20%;
+    --primary-foreground: 45 29% 97%;
+    --secondary: 45 20% 94%;
+    --secondary-foreground: 240 8% 20%;
+    --muted: 45 20% 94%;
+    --muted-foreground: 240 4% 52%;
+    --accent: 45 20% 94%;
+    --accent-foreground: 240 8% 20%;
+    --destructive: 0 62% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 12% 90%;
+    --input: 40 12% 88%;
+    --ring: 240 8% 20%;
+    --radius: 0.875rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* 长图导出：隐藏操作按钮、固定两栏布局，保证导出的图片干净规整
+   页面 body 和克隆根节点都会带 .export-clean，SVG foreignObject 内部同样生效 */
+.export-clean [data-export-hide] {
+  display: none !important;
+}
+.export-clean .exp-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+/* 长图成品外框：只在导出时出现，页面本身不变
+   （克隆进 SVG 后 .export-clean 和 .frame-board 在同一个根节点上，两种选择器都要） */
+.export-clean .frame-board,
+.export-clean.frame-board {
+  padding: 44px;
+  border-radius: 30px;
+  background: linear-gradient(165deg, #faf7ef 0%, #eef0e7 58%, #e6ecdf 100%);
+  box-shadow: 0 30px 70px -28px rgb(70 66 56 / 0.28);
+}

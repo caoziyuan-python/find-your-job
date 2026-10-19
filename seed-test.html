@@ -1,0 +1,20 @@
+<!doctype html>
+<meta charset="utf-8" />
+<script>
+  const mkApplied = (id, company) => ({ id, company, anonymousName:"某", role:"AIPM", city:"北京", stage:"applied", status:"active", appliedAt:"10-15",
+    rounds:[ { id:id+"1", stage:"applied", title:"投递简历", date:"10-15", result:"pending" } ]});
+  const bs = { id:"bs", company:"笔视公司", anonymousName:"某", role:"AIPM", city:"上海", stage:"written", status:"active", appliedAt:"10-13",
+    rounds:[
+      { id:"bs1", stage:"applied", title:"投递简历", date:"10-13", result:"pass" },
+      { id:"bs2", stage:"written", title:"笔试", date:"10-16", time:"10:00-11:00", result:"pending" },
+    ]};
+  const ms = { id:"ms", company:"面视公司", anonymousName:"某", role:"AIPM", city:"深圳", stage:"first", status:"active", appliedAt:"10-12",
+    rounds:[
+      { id:"ms1", stage:"applied", title:"投递简历", date:"10-12", result:"pass" },
+      { id:"ms2", stage:"first", title:"一面", date:"10-15", time:"14:00-15:00", result:"pending" },
+    ]};
+  localStorage.setItem("qiuzhao.apps.v1", JSON.stringify([
+    mkApplied("a","阿里巴巴"), mkApplied("b","VIVO"), mkApplied("c","OPPO"), bs, ms,
+  ]));
+  location.replace("/?view=overview");
+</script>
